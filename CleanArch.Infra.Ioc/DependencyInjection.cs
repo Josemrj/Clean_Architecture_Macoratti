@@ -10,20 +10,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace CleanArch.Infra.Data {
+namespace CleanArch.Infra.Ioc {
     public static class DependencyInjection {
 
-        public static IServiceCollection AddInfraestructure(this IServiceCollection services, 
-            IConfiguration configuration) 
-            
-            {
+        public static IServiceCollection AddInfraestructure(this IServiceCollection services,
+            IConfiguration configuration) {
 
             services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlServer(
                         configuration.GetConnectionString("DefaultConnection"),
                         b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-            
-            
+
+
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
