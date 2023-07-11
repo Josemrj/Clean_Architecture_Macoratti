@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArch.Infra.Data.EntityConfigurations {
+    
+    //Configuracao de Entidade (Aqui posso codar como a entidade vai se comportar em relação a sua construção utilizando 'Fluent API')
     public class ProductConfiguration : IEntityTypeConfiguration<Product> {
         public void Configure(EntityTypeBuilder<Product> builder) {
 
@@ -15,6 +17,7 @@ namespace CleanArch.Infra.Data.EntityConfigurations {
             builder.Property(p => p.Description).HasMaxLength(200).IsRequired();
             builder.Property(p => p.Price).HasPrecision(10, 2);
 
+            //Elemento 'HasData' verifica se dados está na tabela em DB, caso não negativo, é feita a inclusão de uma tabela.
             builder.HasData(
                 new Product {
                     Id = 1,
