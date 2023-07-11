@@ -9,6 +9,10 @@ using System;
 
 namespace CleanArch.MVC {
     public class Program {
+
+        //Cria um escopo de serviço, obtém o contexto do banco de dados, executa as migrações pendentes e, em caso de erros, registra as exceções.
+        //Em seguida, inicia a execução do aplicativo. Garantia que o banco de dados esteja devidamente configurado antes de iniciar a aplicação.
+
         public static void Main(string[] args) {
 
 
